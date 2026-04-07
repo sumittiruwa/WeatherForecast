@@ -1,0 +1,157 @@
+.bg-wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  transition: background 1.5s ease;
+}
+
+/* ─── Condition Gradients ────────────────────────────────────── */
+.bg-clear {
+  background: linear-gradient(160deg, #0f2d5e 0%, #1a4a8a 40%, #2d6cbf 70%, #1e3d73 100%);
+}
+.bg-rain {
+  background: linear-gradient(160deg, #1a1f2e 0%, #243044 40%, #2d3e5a 70%, #1a2535 100%);
+}
+.bg-cloudy {
+  background: linear-gradient(160deg, #1e2535 0%, #2d3548 40%, #3d4a60 70%, #252d3d 100%);
+}
+.bg-snow {
+  background: linear-gradient(160deg, #1a2a4a 0%, #243558 40%, #2d4470 70%, #1a2a4a 100%);
+}
+.bg-storm {
+  background: linear-gradient(160deg, #120a2e 0%, #1e1040 40%, #2d1a60 70%, #140c35 100%);
+}
+.bg-mist {
+  background: linear-gradient(160deg, #1a2030 0%, #28303f 40%, #303c50 70%, #1d2535 100%);
+}
+
+/* ─── Animated Layers ────────────────────────────────────────── */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.bg-clear .layer-1 {
+  background: radial-gradient(ellipse at 20% 30%, rgba(56, 150, 255, 0.35) 0%, transparent 60%);
+  animation: drift1 18s ease-in-out infinite alternate;
+}
+.bg-clear .layer-2 {
+  background: radial-gradient(ellipse at 80% 70%, rgba(251, 191, 36, 0.18) 0%, transparent 55%);
+  animation: drift2 22s ease-in-out infinite alternate;
+}
+
+.bg-rain .layer-1 {
+  background: radial-gradient(ellipse at 30% 20%, rgba(56, 100, 180, 0.3) 0%, transparent 60%);
+  animation: drift1 15s ease-in-out infinite alternate;
+}
+.bg-rain .layer-2 {
+  background: radial-gradient(ellipse at 70% 80%, rgba(30, 60, 120, 0.25) 0%, transparent 55%);
+  animation: drift2 18s ease-in-out infinite alternate;
+}
+
+.bg-cloudy .layer-1 {
+  background: radial-gradient(ellipse at 40% 30%, rgba(80, 100, 140, 0.25) 0%, transparent 60%);
+  animation: drift1 20s ease-in-out infinite alternate;
+}
+.bg-cloudy .layer-2 {
+  background: radial-gradient(ellipse at 60% 70%, rgba(60, 80, 120, 0.2) 0%, transparent 55%);
+  animation: drift2 24s ease-in-out infinite alternate;
+}
+
+.bg-snow .layer-1 {
+  background: radial-gradient(ellipse at 25% 25%, rgba(100, 160, 220, 0.28) 0%, transparent 60%);
+  animation: drift1 20s ease-in-out infinite alternate;
+}
+.bg-snow .layer-2 {
+  background: radial-gradient(ellipse at 75% 75%, rgba(150, 200, 255, 0.18) 0%, transparent 55%);
+  animation: drift2 25s ease-in-out infinite alternate;
+}
+
+.bg-storm .layer-1 {
+  background: radial-gradient(ellipse at 35% 25%, rgba(120, 60, 220, 0.3) 0%, transparent 60%);
+  animation: drift1 12s ease-in-out infinite alternate;
+}
+.bg-storm .layer-2 {
+  background: radial-gradient(ellipse at 65% 75%, rgba(60, 20, 160, 0.25) 0%, transparent 55%);
+  animation: drift2 15s ease-in-out infinite alternate;
+}
+
+.bg-mist .layer-1 {
+  background: radial-gradient(ellipse at 50% 40%, rgba(80, 100, 130, 0.3) 0%, transparent 60%);
+  animation: drift1 25s ease-in-out infinite alternate;
+}
+.bg-mist .layer-2 {
+  background: radial-gradient(ellipse at 50% 60%, rgba(60, 80, 110, 0.2) 0%, transparent 55%);
+  animation: drift2 30s ease-in-out infinite alternate;
+}
+
+/* ─── Noise texture ──────────────────────────────────────────── */
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+}
+
+/* ─── Particles ──────────────────────────────────────────────── */
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.raindrop {
+  position: absolute;
+  top: -20px;
+  width: 1.5px;
+  height: 18px;
+  background: linear-gradient(to bottom, transparent, rgba(147, 197, 253, 0.6));
+  border-radius: 2px;
+  animation: rain linear infinite;
+}
+
+.snowflake {
+  position: absolute;
+  top: -30px;
+  color: rgba(186, 230, 253, 0.7);
+  animation: snowfall linear infinite;
+}
+
+.cloud-particle {
+  position: absolute;
+  left: -200px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50px;
+  animation: cloudDrift linear infinite;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────── */
+@keyframes drift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.1); }
+}
+@keyframes drift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-30px, -25px) scale(1.08); }
+}
+@keyframes rain {
+  0%   { transform: translateY(-20px); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+@keyframes snowfall {
+  0%   { transform: translateY(-30px) translateX(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.8; }
+  100% { transform: translateY(110vh) translateX(40px) rotate(360deg); opacity: 0; }
+}
+@keyframes cloudDrift {
+  from { transform: translateX(-10%); }
+  to   { transform: translateX(120vw); }
+}

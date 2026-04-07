@@ -1,0 +1,148 @@
+.forecast-card {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
+
+.forecast-title {
+  font-family: "Syne", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+/* ─── Hourly ────────────────────────────────────────────────── */
+.hourly-scroll {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+.hourly-scroll::-webkit-scrollbar { height: 4px; }
+.hourly-scroll::-webkit-scrollbar-thumb { background: var(--glass-border); border-radius: 4px; }
+
+.hourly-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-width: 78px;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.hourly-slot:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+.h-time {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.h-icon {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.h-temp {
+  font-family: "Syne", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.h-pop {
+  font-size: 0.65rem;
+  color: var(--accent);
+  height: 14px;
+}
+
+/* ─── Daily ─────────────────────────────────────────────────── */
+.daily-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.daily-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 12px;
+  padding: 10px 14px;
+  transition: background 0.2s;
+}
+
+.daily-row:hover { background: rgba(255,255,255,0.08); }
+
+.d-day {
+  font-family: "Syne", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.d-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.d-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.d-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.d-max, .d-min {
+  font-family: "Syne", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  width: 40px;
+  text-align: center;
+}
+
+.d-max { color: var(--text-primary); }
+.d-min { color: var(--text-secondary); }
+
+.d-bar {
+  width: 80px;
+  height: 5px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.d-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #38bdf8, var(--accent));
+  border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+  .d-range { display: none; }
+  .d-desc  { display: none; }
+}
